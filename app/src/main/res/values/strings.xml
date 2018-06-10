@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Dish book</string>
+    <string name="title_activity_add_dish">Add Dish</string>
+    <string name="title_activity_dish_list">List of Dish</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="placeholder_dish_name">Dish name</string>
+    <string name="add_dish">Add dish</string>
+    <string name="all_dishes">All dishes</string>
+</resources>
