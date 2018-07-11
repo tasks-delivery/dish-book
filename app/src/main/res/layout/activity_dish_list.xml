@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DishList">
+    tools:context="activity.DishList"
+    android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_dish_list"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_add_dish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:src="@android:drawable/ic_input_add"
+            />
 
-    </android.support.design.widget.AppBarLayout>
+        <ListView
+            android:id="@+id/dish_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <include layout="@layout/content_dish_list" />
+    </RelativeLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>
 

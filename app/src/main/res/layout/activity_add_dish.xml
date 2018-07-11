@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddDish">
+    tools:context="activity.AddDish"
+    android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
+        android:layout_marginTop="250dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_add_dish"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/field_dish_name"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="46dp"
+            android:layout_marginBottom="200px"
+            android:layout_marginLeft="100px"
+            android:layout_marginRight="100px"
+            android:hint="@string/placeholder_dish_name"
 
-    </android.support.design.widget.AppBarLayout>
+            />
 
-    <include layout="@layout/content_add_dish" />
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="200px"
+            android:layout_marginRight="100px"
+            />
 
-</android.support.design.widget.CoordinatorLayout>
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_marginTop="200px"
+            android:layout_marginLeft="100px"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
