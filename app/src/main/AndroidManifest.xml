@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dish.book.dishbook">
+    package="dish.book.core">
 
     <application
+        android:name="services.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main">
+        <activity android:name="activity.Main">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,13 +19,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddDish"
+            android:name="activity.AddDish"
             android:label="@string/title_activity_add_dish"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".DishList"
+            android:name="activity.DishList"
             android:label="@string/title_activity_dish_list"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="activity.DishProfile"
+            android:label="@string/title_activity_dish_list"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="activity.EditDish"
+            android:label="@string/title_activity_edit_dish"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
