@@ -1,4 +1,4 @@
-package dish;
+package entity;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -14,20 +14,23 @@ public interface DishDao {
     @Query("SELECT * FROM dish")
     List<Dish> getAll();
 
-    @Query("SELECT name FROM dish")
+    @Query("SELECT id FROM dish WHERE dish_name =:dish_name")
+    Integer getIdByName(String dish_name);
+
+    @Query("SELECT dish_name FROM dish")
     List<String> getAllNames();
+
+    @Query("SELECT description FROM dish")
+    List<String> getAllDescriptions();
 
     @Query("SELECT * FROM dish WHERE id = :id")
     Dish getById(int id);
 
-    @Query("SELECT * FROM dish WHERE name = :name")
-    Dish getByName(String name);
-
-    @Query("SELECT id FROM dish WHERE name = :name")
-    Dish getIdByName(String name);
+    @Query("SELECT * FROM dish WHERE dish_name = :dish_name")
+    Dish getByName(String dish_name);
 
     @Insert
-    void inster(Dish dish);
+    void insert(Dish dish);
 
     @Update
     void update(Dish dish);
