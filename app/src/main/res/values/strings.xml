@@ -1,13 +1,24 @@
 <resources>
     <string name="app_name">Dish book</string>
-    <string name="title_activity_add_dish">Add Dish</string>
+    <string name="title_activity_dish_profile">DishProfile</string>
     <string name="title_activity_dish_list">List of Dish</string>
     <string name="title_activity_edit_dish">Edit Dish</string>
-    <string name="save">Save</string>
-    <string name="cancel">Cancel</string>
+    <string name="title_activity_add_dish">Add Dish</string>
     <string name="placeholder_dish_name">Dish name</string>
     <string name="add_dish">Add dish</string>
     <string name="all_dishes">All dishes</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="back">Back</string>
+    <string name="ok">OK</string>
+    <string name="make_photo_dishes">Make photo dishes</string>
+    <string name="description">Description</string>
+    <string name="delete_dish">Delete dish</string>
+    <string name="conflict_with_existing_dish_name">Conflict with existing dish name</string>
+    <string name="new_ingredient">New ingredient</string>
     <string name="ingredients">Ingredients</string>
-    <string name="title_activity_dish_profile">DishProfile</string>
+    <string name="ingredient_name">Ingredient name</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="dish_weight">Dish weight</string>
+    <string name="list_of_ingredients">List of ingredients</string>
 </resources>

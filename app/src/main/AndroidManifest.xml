@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dish.book.core">
+    package="dish_1.book.core">
 
     <application
         android:name="services.App"
@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.Main">
+        <activity android:name="dish_1.DishActivity_1">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,21 +19,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="activity.AddDish"
+            android:name="dish_2.DishActivity_2"
             android:label="@string/title_activity_add_dish"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="activity.DishList"
+            android:name="dish_3.DishActivity_3"
             android:label="@string/title_activity_dish_list"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="activity.DishProfile"
+            android:name="dish_4.DishActivity_4"
             android:label="@string/title_activity_dish_list"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name="activity.EditDish"
+            android:name="dish_5.DishActivity_5"
             android:label="@string/title_activity_edit_dish"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="dish_6.DishActivity_6"
+            android:label="@string/new_ingredient"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="dish_7.DishActivity_7"
+            android:label="@string/list_of_ingredients"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
