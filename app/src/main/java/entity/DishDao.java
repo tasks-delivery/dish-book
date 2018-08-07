@@ -20,8 +20,8 @@ public interface DishDao {
     @Query("SELECT dish_name FROM dish")
     List<String> getAllNames();
 
-    @Query("SELECT description FROM dish")
-    List<String> getAllDescriptions();
+    @Query("SELECT description FROM dish WHERE dish_name = :dish_name")
+    String getDescriptionByName(String dish_name);
 
     @Query("SELECT * FROM dish WHERE id = :id")
     Dish getById(int id);

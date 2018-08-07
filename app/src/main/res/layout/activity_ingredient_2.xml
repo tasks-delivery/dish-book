@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dish_7.DishActivity_7"
+    tools:context="ingredient_2.IngredientActivity_2"
     android:orientation="vertical">
 
     <ListView

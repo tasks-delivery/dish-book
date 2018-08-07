@@ -30,7 +30,8 @@ public class DishPresenter_4 {
     }
 
     public String shownDescription() {
-        return dishDao.getByName(mDishView_4.findDish()).description;
+        return  dishDao.getDescriptionByName(mDishView_4.findDish());
+        //return dishDao.getByName(mDishView_4.findDish()).description;
     }
 
     public void openDish_5() {

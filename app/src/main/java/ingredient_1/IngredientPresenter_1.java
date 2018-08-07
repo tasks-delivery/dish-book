@@ -1,4 +1,4 @@
-package dish_6;
+package ingredient_1;
 
 import entity.Dish;
 import entity.DishDao;
@@ -8,11 +8,11 @@ import ru.arturvasilov.rxloader.LifecycleHandler;
 import services.App;
 import services.DatabaseService;
 
-public class DishPresenter_6 {
+public class IngredientPresenter_1 {
 
     LifecycleHandler mLifecycleHandler;
 
-    DishView_6 mDishView_6;
+    IngredientView_1 mIngredientView_1;
 
     DatabaseService db = App.getInstance().getDatabaseService();
 
@@ -24,20 +24,29 @@ public class DishPresenter_6 {
 
     IngredientDao ingredientDao;
 
-    public DishPresenter_6(LifecycleHandler lifecycleHandler, DishView_6 dishView_6){
+    public IngredientPresenter_1(LifecycleHandler lifecycleHandler, IngredientView_1 ingredientView_1){
         mLifecycleHandler = lifecycleHandler;
-        mDishView_6 = dishView_6;
+        mIngredientView_1 = ingredientView_1;
         dishDao = db.dishDao();
         ingredientDao = db.ingredientDao();
     }
 
     public void addNewIngredient(String name){
-        dish = dishDao.getByName(mDishView_6.findDish());
         ingredient = new Ingredient();
         ingredient.ingredient = name;
-        ingredient.dishId = dishDao.getIdByName(mDishView_6.findDish());
+        ingredient.dishId = (int) Math.random() + 1;
         ingredientDao.insert(ingredient);
-        mDishView_6.openDish_4();
+        mIngredientView_1.openIngredient_3();
+       // mIngredientView_1.openDish_4();
+
+        /*
+        dish = dishDao.getByName(mIngredientView_1.findDish());
+        ingredient = new Ingredient();
+        ingredient.ingredient = name;
+        ingredient.dishId = dishDao.getIdByName(mIngredientView_1.findDish());
+        ingredientDao.insert(ingredient);
+        mIngredientView_1.openDish_4();
+        */
     }
 
 }

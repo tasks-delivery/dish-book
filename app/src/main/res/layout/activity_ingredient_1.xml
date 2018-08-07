@@ -6,7 +6,7 @@
     android:gravity="center"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
-    tools:context="dish_6.DishActivity_6"
+    tools:context="ingredient_1.IngredientActivity_1"
     android:orientation="vertical">
 
     <EditText

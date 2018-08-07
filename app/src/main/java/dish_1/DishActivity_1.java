@@ -13,6 +13,8 @@ import butterknife.OnClick;
 import dish_1.book.core.R;
 import dish_2.DishActivity_2;
 import dish_3.DishActivity_3;
+import ingredient_1.IngredientActivity_1;
+import ingredient_3.IngredientActivity_3;
 import ru.arturvasilov.rxloader.LifecycleHandler;
 import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
 
@@ -25,6 +27,12 @@ public class DishActivity_1 extends AppCompatActivity implements DishView_1 {
 
     @BindView(R.id.dish_1_btn_all_dishes)
     Button dish_1_btn_all_dishes;
+
+    @BindView(R.id.dish_1_btn_add_ingredient)
+    Button dish_1_btn_add_ingredient;
+
+    @BindView(R.id.dish_1_btn_all_ingredients)
+    Button dish_1_btn_all_ingredients;
 
     public static void start(@NonNull Activity activity) {
         Intent intent = new Intent(activity, DishActivity_1.class);
@@ -50,6 +58,16 @@ public class DishActivity_1 extends AppCompatActivity implements DishView_1 {
         dishPresenter_1.openDish_3();
     }
 
+    @OnClick(R.id.dish_1_btn_add_ingredient)
+    public void goToAddIngredient() {
+        dishPresenter_1.openIngreidnet_1();
+    }
+
+    @OnClick(R.id.dish_1_btn_all_ingredients)
+    public void goToIngredientList() {
+        dishPresenter_1.openIngreidnet_3();
+    }
+
     @Override
     public void openDish_3() {
         startActivity(new Intent(this, DishActivity_3.class));
@@ -58,6 +76,20 @@ public class DishActivity_1 extends AppCompatActivity implements DishView_1 {
     @Override
     public void openDish_2() {
         startActivity(new Intent(this, DishActivity_2.class));
+    }
+
+    @Override
+    public void openIngredient_1() {
+        startActivity(new Intent(this, IngredientActivity_1.class));
+    }
+
+    @Override
+    public void openIngredient_3() {
+        //startActivity(new Intent(this, IngredientActivity_3.class));
+
+        Intent dishActivity1 = new Intent(DishActivity_1.this, IngredientActivity_3.class);
+        dishActivity1.putExtra("name", "dishActivity1");
+        startActivity(dishActivity1);
     }
 
 }

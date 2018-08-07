@@ -28,4 +28,12 @@ public class DishPresenter_1 {
         mDishView_1.openDish_2();
     }
 
+    public void openIngreidnet_1(){
+        mDishView_1.openIngredient_1();
+    }
+
+    public void openIngreidnet_3(){
+        mDishView_1.openIngredient_3();
+    }
+
 }
