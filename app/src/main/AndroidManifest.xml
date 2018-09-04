@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dish_1.book.core">
 
+
+
     <application
+        tools:replace="android:icon"
         android:name="services.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,17 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="dish_1.DishActivity_1">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
-
             android:name="dish_2.DishActivity_2"
             android:label="@string/title_activity_add_dish"
             android:theme="@style/AppTheme" />

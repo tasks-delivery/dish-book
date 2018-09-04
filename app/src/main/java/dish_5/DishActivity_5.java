@@ -1,9 +1,7 @@
 package dish_5;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -19,12 +17,10 @@ import dialogs.DishDialogActivity_1;
 import dish_1.book.core.R;
 import dish_3.DishActivity_3;
 import dish_4.DishActivity_4;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
 
 public class DishActivity_5 extends AppCompatActivity implements DishView_5 {
 
-    DishPresenter_5 dishPresenter_5;
+    private DishPresenter_5 dishPresenter_5;
 
     @BindView(R.id.dish_5_btn_save)
     Button dish_5_btn_save;
@@ -44,11 +40,6 @@ public class DishActivity_5 extends AppCompatActivity implements DishView_5 {
     @BindView(R.id.dish_5_field_dish_name)
     EditText dish_5_field_dish_name;
 
-    public static void start(@NonNull Activity activity){
-        Intent intent = new Intent(activity, DishActivity_5.class);
-        activity.startActivity(intent);
-    }
-
     @OnClick(R.id.dish_5_btn_back)
     public void goBack(){
         dishPresenter_5.openDish_4();
@@ -61,9 +52,9 @@ public class DishActivity_5 extends AppCompatActivity implements DishView_5 {
 
     @OnClick(R.id.dish_5_btn_save)
     public void goToDishList(){
-        String name = dish_5_field_dish_name.getText().toString();
-        String description = dish_5_field_dish_description.getText().toString();
-        dishPresenter_5.updateDish(name, description);
+        String dish_name = dish_5_field_dish_name.getText().toString();
+        String dish_descr = dish_5_field_dish_description.getText().toString();
+        dishPresenter_5.updateDish(dish_name, dish_descr);
     }
 
     @OnTextChanged(R.id.dish_5_field_dish_name)
@@ -75,8 +66,7 @@ public class DishActivity_5 extends AppCompatActivity implements DishView_5 {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dish_5);
         ButterKnife.bind(this);
-        LifecycleHandler lifecycleHandler = LoaderLifecycleHandler.create(this, getSupportLoaderManager());
-        dishPresenter_5 = new DishPresenter_5(lifecycleHandler, this);
+        dishPresenter_5 = new DishPresenter_5( this);
         dish_5_field_dish_description.setImeOptions(EditorInfo.IME_ACTION_DONE);
         dish_5_field_dish_description.setRawInputType(InputType.TYPE_CLASS_TEXT);
         dish_5_btn_save.setEnabled(false);
@@ -108,15 +98,20 @@ public class DishActivity_5 extends AppCompatActivity implements DishView_5 {
 
     @Override
     public void openDish_4() {
-        Intent dishProfile = new Intent(DishActivity_5.this, DishActivity_4.class);
-        dishProfile.putExtra("name", findDish());
-        startActivity(dishProfile);
+        Intent intent = new Intent(DishActivity_5.this, DishActivity_4.class);
+        intent.putExtra("dish_name", dish_5_field_dish_name.getText().toString());
+        startActivity(intent);
         finish();
     }
 
     @Override
     public String findDish() {
         Intent intent = getIntent();
-        return intent.getStringExtra("name");
+        return intent.getStringExtra("dish_name");
+    }
+
+    @Override
+    public void onBackPressed(){
+        dishPresenter_5.openDish_4();
     }
 }

@@ -1,82 +1,93 @@
 package ingredient_3;
 
+import android.util.SparseBooleanArray;
+
 import java.util.List;
 
-import entity.Dish;
-import entity.DishDao;
-import entity.Ingredient;
-import entity.IngredientDao;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
+import services.DishAndIngredientService;
+import services.IngredientService;
 
 public class IngredientPresenter_3 {
 
-    LifecycleHandler mLifecycleHandler;
+    private IngredientService ingredientService;
 
-    IngredientView_3 mIngredientView_3;
+    private IngredientView_3 mIngredientView_3;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
+    private DishAndIngredientService dishAndIngredientService;
 
-
-    Dish dish;
-
-    DishDao dishDao;
-
-    Ingredient ingredient;
-
-    IngredientDao ingredientDao;
-
-
-    public IngredientPresenter_3(LifecycleHandler lifecycleHandler, IngredientView_3 ingredientView_3){
-        mLifecycleHandler = lifecycleHandler;
+    public IngredientPresenter_3(IngredientView_3 ingredientView_3){
         mIngredientView_3 = ingredientView_3;
-        dishDao = db.dishDao();
-        ingredientDao = db.ingredientDao();
     }
 
-    public List<String> loadIngredients() {
-        System.out.println(ingredientDao.getAllIngredients());
-
-        return ingredientDao.getAllIngredients();
-    }
-
-    public void removeIngredient(String ing_name){
-        ingredient = ingredientDao.getIngredientByName(ing_name);
-        ingredientDao.delete(ingredient);
-    }
-
-    public void openIngreidnet_1(){
+    public void openIngredient_1(){
         mIngredientView_3.openIngredient_1();
     }
 
-    public Boolean ingredientExists(String ingredient){
-        if (ingredientDao.getAll().contains(ingredient) == true){
-            mIngredientView_3.openDish_4();
-            return true;
-        }else {
-            return false;
-        }
-
-       // ingredientDao.getAllIngredients().contains()
+    public void openDish_4(){
+        mIngredientView_3.openDish_4();
     }
 
-    public void addNewIngredient(String name){
-        ingredient = new Ingredient();
-        ingredient.ingredient = name;
-        ingredient.dishId = (int) Math.random() + 1;
-        ingredientDao.insert(ingredient);
-      //  mIngredientView_3.openIngredient_3();
-        // mIngredientView_1.openDish_4();
+    public void navigateFromIngredient1(){
+        mIngredientView_3.navigateFromIngredient1();
+    }
 
-        /*
-        dish = dishDao.getByName(mIngredientView_1.findDish());
-        ingredient = new Ingredient();
-        ingredient.ingredient = name;
-        ingredient.dishId = dishDao.getIdByName(mIngredientView_1.findDish());
-        ingredientDao.insert(ingredient);
-        mIngredientView_1.openDish_4();
-        */
+    public void navigateFromDish4RemoveIng(){
+        mIngredientView_3.navigateFromDish4RemoveIng();
+    }
+
+    public void navigateFromDish1(){
+        mIngredientView_3.navigateFromDish1();
+    }
+
+    public void navigateFormDish4AddIng(){
+        mIngredientView_3.navigateFormDish4AddIng();
+    }
+
+    public List<String> loadAllIngredients() {
+        ingredientService = new IngredientService();
+        return ingredientService.findAllIngredientsNames();
+    }
+
+    public List<String> loadAllIngredientsWithoutDish() {
+        dishAndIngredientService = new DishAndIngredientService();
+      //  return dishAndIngredientService.loadAllIngredientsWithoutDish(mIngredientView_3.findDish());
+        return null;
+    }
+
+    public List<String> loadIngredientsOfDish() {
+        dishAndIngredientService = new DishAndIngredientService();
+      //  return dishAndIngredientService.findIngredientsOfDish(mIngredientView_3.findDish());
+        return null;
+    }
+
+    public void removeSelectedIngredients(int ing_length, SparseBooleanArray ing_position) {
+        ingredientService = new IngredientService();
+        for (int i = 0; i < ing_length; i++)
+            if (ing_position.get(i)) {
+                String item = loadAllIngredients().get(i);
+                ingredientService.deleteIngredient(item);
+            }
+    }
+
+    public void removeIngredientFromDish(int ing_length, SparseBooleanArray ing_position){
+        dishAndIngredientService = new DishAndIngredientService();
+      //  ingredientService = new IngredientService();
+        for (int i = 0; i < ing_length; i++)
+            if (ing_position.get(i)) {
+                String item = loadAllIngredients().get(i);
+
+              //  dishAndIngredientService.findIngredientsOfDish(item);
+            }
+    }
+
+
+    public void addSelectedIngredients(int ing_length, SparseBooleanArray ing_position) {
+        dishAndIngredientService = new DishAndIngredientService();
+        for (int i = 0; i < ing_length; i++)
+            if (ing_position.get(i)) {
+                String item = loadAllIngredients().get(i);
+                dishAndIngredientService.addIngredientToDish(mIngredientView_3.findDish(),item);
+            }
     }
 
 

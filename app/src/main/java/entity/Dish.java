@@ -47,9 +47,10 @@ public class Dish extends ViewModel {
         this.description = description;
     }
 
+
     @Override
     public String toString() {
-        return dish_name + "\n" + description;
+        return dish_name +" "+ description;
     }
 
 }
