@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    tools:context="dish_2.DishActivity_2"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/dish_2_field_dish_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/placeholder_dish_name"
+        android:imeOptions="actionNext"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:inputType=""
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_marginTop="30dp"
+        android:id="@+id/dish_2_field_dish_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dish_2_field_dish_name"
+        android:ems="5"
+        android:hint="@string/description"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:maxLength="125"
+        android:maxLines="5"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_below="@id/dish_2_field_dish_description"
+        android:id="@+id/dish_2_btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/save" />
+
+    <Button
+        android:layout_below="@id/dish_2_btn_save"
+        android:id="@+id/dish_2_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/back" />
+
+</RelativeLayout>

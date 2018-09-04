@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="dish_1.book.core">
+
+
+
+    <application
+        tools:replace="android:icon"
+        android:name="services.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="dish_1.DishActivity_1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="dish_2.DishActivity_2"
+            android:label="@string/title_activity_add_dish"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="dish_3.DishActivity_3"
+            android:label="@string/title_activity_dish_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="dish_4.DishActivity_4"
+            android:label="@string/title_activity_dish_list"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="dish_5.DishActivity_5"
+            android:label="@string/title_activity_edit_dish"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="ingredient_1.IngredientActivity_1"
+            android:label="@string/new_ingredient"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="ingredient_2.IngredientActivity_2"
+            android:label="@string/list_of_ingredients"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="ingredient_3.IngredientActivity_3"
+            android:label="List of ingredients"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="ingredient_4.IngredientActivity_4"
+            android:label="@string/title_activity_dish_list"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>
