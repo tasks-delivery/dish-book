@@ -2,6 +2,7 @@ package dish_1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -13,9 +14,8 @@ import dish_3.DishActivity_3;
 import ingredient_1.IngredientActivity_1;
 import ingredient_3.IngredientActivity_3;
 import io.realm.Realm;
-import services.NavigationService;
 
-public class DishActivity_1 extends NavigationService implements DishView_1 {
+public class DishActivity_1 extends AppCompatActivity implements DishView_1 {
 
     private DishPresenter_1 dishPresenter_1;
 

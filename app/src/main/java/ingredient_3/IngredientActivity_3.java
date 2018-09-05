@@ -3,6 +3,7 @@ package ingredient_3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,9 +20,8 @@ import butterknife.OnClick;
 import dish_1.book.core.R;
 import dish_4.DishActivity_4;
 import ingredient_1.IngredientActivity_1;
-import services.NavigationService;
 
-public class IngredientActivity_3 extends NavigationService implements IngredientView_3 {
+public class IngredientActivity_3 extends AppCompatActivity implements IngredientView_3 {
 
     private IngredientPresenter_3 ingredientPresenter_3;
 

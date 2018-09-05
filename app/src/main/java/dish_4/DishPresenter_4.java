@@ -35,13 +35,12 @@ public class DishPresenter_4 {
 
     public String shownDescription() {
         dishService = new DishService();
-        return dishService.shownDescription(mDishView_4.findDish());
+        return dishService.findDescriptionOfDishByDishName(mDishView_4.findDish());
     }
 
     public List<String> loadIngredientsOfDish() {
         dishAndIngredientService = new DishAndIngredientService();
-       // return dishAndIngredientService.findIngredientsOfDish(mDishView_4.findDish());
-        return null;
+        return dishAndIngredientService.findAllIngredientNamesOfDishByDishName(mDishView_4.findDish());
     }
 
 }

@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dish_1.book.core">
 
-
-
     <application
         tools:replace="android:icon"
         android:name="services.App"

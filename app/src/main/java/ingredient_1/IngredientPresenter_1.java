@@ -20,9 +20,9 @@ public class IngredientPresenter_1 {
         mIngredientView_1.openDish_1();
     }
 
-    public void addNewIngredient(String ing_name){
+    public void addNewIngredient(String ingName){
         ingredientService = new IngredientService();
-        ingredientService.createIngredient(ing_name);
+        ingredientService.saveIngredient(ingName);
         openIngredient_3();
     }
 
