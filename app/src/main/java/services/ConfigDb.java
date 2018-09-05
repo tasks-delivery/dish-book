@@ -16,8 +16,8 @@ public class ConfigDb extends Application {
 
     public RealmConfiguration getRealmConfiguration() {
         realmConfiguration = new RealmConfiguration.Builder()
-                .name("test")
-                .schemaVersion(3)
+                .name("tetst")
+                .schemaVersion(4)
                 .build();
         return realmConfiguration;
     }

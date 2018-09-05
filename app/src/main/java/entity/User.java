@@ -6,6 +6,9 @@ import io.realm.RealmObject;
 public class User extends RealmObject {
 
     private String name;
+
+    private String description;
+
     private RealmList<Work> works;
 
     private Work work;
@@ -22,19 +25,27 @@ public class User extends RealmObject {
     this.name = name;
   }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+      return name;
+    }
 
-  public void setWorks(RealmList<Work> works) {
-    this.works = works;
-  }
+    public void setWorks(RealmList<Work> works) {
+      this.works = works;
+    }
 
-  public RealmList<Work> getWorks() {
+    public RealmList<Work> getWorks() {
     return works;
   }
 
-   // public String getId() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // public String getId() {
  //       return id;
   //  }
 
