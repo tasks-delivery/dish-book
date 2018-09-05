@@ -63,7 +63,12 @@ public class DishActivity_2 extends AppCompatActivity implements DishView_2{
 
         String name = dish_2_field_dish_name.getText().toString();
         String description = dish_2_field_dish_description.getText().toString();
+<<<<<<< HEAD
         dishPresenter_2.createDish(name, description);
+=======
+        dishPresenter_2.createUser(name,description);
+        //dishPresenter_2.createDish(name, description);
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
     }
 
     @OnTextChanged(R.id.dish_2_field_dish_name)
@@ -76,7 +81,10 @@ public class DishActivity_2 extends AppCompatActivity implements DishView_2{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Realm.init(getApplicationContext());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
     }
 
     @Override

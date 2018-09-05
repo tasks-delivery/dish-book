@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +21,15 @@ import entity.Work;
 import io.realm.Realm;
 
 import static junit.framework.Assert.assertEquals;
+=======
+import java.util.Arrays;
+
+import dish_2.DishActivity_2;
+import io.realm.Realm;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
 
 @RunWith(AndroidJUnit4.class)
 public class testing extends Application {
@@ -31,10 +41,20 @@ public class testing extends Application {
 
     private Realm realm;
 
+<<<<<<< HEAD
+=======
+    private WorkService workService;
+
+    private UserService userService;
+
+    private UserAndworkService userAndWorkService;
+
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
     @Before
     public void setUp(){
         configDb = new ConfigDb();
         realm = Realm.getInstance(configDb.getRealmConfiguration());
+<<<<<<< HEAD
         /*
 
         if (realm.isClosed() == false){
@@ -45,76 +65,145 @@ public class testing extends Application {
             realm = Realm.getInstance(configDb.getRealmConfiguration());
         }
         */
+=======
+        workService = new WorkService();
+        userService = new UserService();
+        userAndWorkService = new UserAndworkService();
+    }
+
+    @Test
+    public void severalUsersShouldBeCreate(){
+        userService.saveUser("first", "");
+        userService.saveUser("second", "");
+        assertTrue(userService.findAllUsers().contains("first"));
+        realm.close();
+        assertTrue(userService.findAllUsers().contains("second"));
+        realm.close();
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
     }
 
     @Test
     public void workShouldBeCreated(){
+<<<<<<< HEAD
         saveWork("test work");
         assertEquals("test work",findWorkNameByName("test work"));
+=======
+        workService.saveWork("test work");
+        assertEquals("test work",workService.findWorkNameByName("test work"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void userShouldBeCreate() {
+<<<<<<< HEAD
         saveUser("test user");
         assertEquals("test user",findUserNameByName("test user"));
+=======
+        userService.saveUser("test user", "test descr");
+        assertEquals("test user",userService.findUserNameByName("test user"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void workShouldBeUpdate(){
+<<<<<<< HEAD
         saveWork("work");
         updateWork("work","new work");
         assertEquals(null,findWorkNameByName("work"));
         assertEquals("new work",findWorkNameByName("new work"));
+=======
+        workService.saveWork("work");
+        workService.updateWork("work","new work");
+        assertEquals(null,workService.findWorkNameByName("work"));
+        realm.close();
+        assertEquals("new work",workService.findWorkNameByName("new work"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void userShouldBeUpdate(){
+<<<<<<< HEAD
         saveUser("user");
         updateUser("user", "new user");
         assertEquals(null,findUserNameByName("user"));
         assertEquals("new user",findUserNameByName("new user"));
+=======
+        userService.saveUser("user", "");
+        userService.updateUser("user", "new user");
+        assertEquals(null,userService.findUserNameByName("user"));
+        realm.close();
+        assertEquals("new user",userService.findUserNameByName("new user"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void userShouldBeDelete(){
+<<<<<<< HEAD
         saveUser("test user");
         deleteUser("test user");
         assertEquals(null,findUserNameByName("test user"));
+=======
+        userService.saveUser("test user", "");
+        userService.deleteUser("test user");
+        assertEquals(null,userService.findUserNameByName("test user"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void workShouldBeDelete(){
+<<<<<<< HEAD
         saveWork("test work");
         deleteWork("test work");
         assertEquals(null,findWorkNameByName("test work"));
+=======
+        workService.saveWork("test work");
+        workService.deleteWork("test work");
+        assertEquals(null,workService.findWorkNameByName("test work"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void workShouldBeAddToUser(){
+<<<<<<< HEAD
         saveWork("test work");
         saveUser("test user");
         assignWorkToUser("test user", "test work");
         assertEquals(Arrays.asList(findWorkNameByName("test work")), findAllWorkNamesOfUserByUserName("test user"));
+=======
+        workService.saveWork("test work");
+        userService.saveUser("test user", "");
+        userAndWorkService.assignWorkToUser("test user", "test work");
+        assertEquals(Arrays.asList("test work"), userAndWorkService.findAllWorkNamesOfUserByUserName("test user"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
     public void workShouldBeDeleteFromUser(){
+<<<<<<< HEAD
         saveWork("work");
         saveUser("user");
         assignWorkToUser("user", "work");
         deleteWorkFromUser("user", "work");
         assertEquals(null, findAllWorkNamesOfUserByUserName("user"));
+=======
+        workService.saveWork("work");
+        userService.saveUser("user", "");
+        userAndWorkService.assignWorkToUser("user", "work");
+        userAndWorkService.deleteWorkFromUser("user", "work");
+        assertEquals(null, userAndWorkService.findAllWorkNamesOfUserByUserName("user"));
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         realm.close();
     }
 
     @Test
+<<<<<<< HEAD
     public void AllWorksOfUserShouldBeDelete(){
         saveUser("user");
         saveWork("first work");
@@ -347,9 +436,39 @@ public class testing extends Application {
             }
         });
         realm.close();
+=======
+    public void allWorksOfUserShouldBeDelete(){
+        userService.saveUser("user", "");
+        workService.saveWork("first work");
+        workService.saveWork("second work");
+        userAndWorkService.assignWorkToUser("user","first work");
+        userAndWorkService.assignWorkToUser("user","second work");
+        userAndWorkService.deleteAllWorksOfUser("user");
+        assertEquals(null, userAndWorkService.findAllWorkNamesOfUserByUserName("user"));
+        realm.close();
+    }
+
+    @After
+    public void clearAllData() {
+        if (realm.isClosed() == false) {
+            realm.close();
+            try {
+                Realm.deleteRealm(configDb.getRealmConfiguration());
+            } catch (IllegalStateException e) {
+                Realm.deleteRealm(configDb.getRealmConfiguration());
+            }
+
+        } else {
+            Realm.deleteRealm(configDb.getRealmConfiguration());
+        }
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
     }
 
 }
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330

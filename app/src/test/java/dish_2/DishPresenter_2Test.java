@@ -27,7 +27,11 @@ public class DishPresenter_2Test {
     }
 
     @Test
+<<<<<<< HEAD
     public void navigateToDish1(){
+=======
+    public void navigatetoDish1(){
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         dishPresenter_2.openDish_1();
         Mockito.verify(dishView_2).openDish_1();
     }

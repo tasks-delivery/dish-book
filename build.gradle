@@ -9,8 +9,15 @@ buildscript {
 
 
     dependencies {
+<<<<<<< HEAD
         classpath "io.realm:realm-gradle-plugin:5.4.1"
         classpath 'com.android.tools.build:gradle:3.1.2'
+=======
+
+        classpath "io.realm:realm-gradle-plugin:5.4.1"
+        classpath 'com.android.tools.build:gradle:3.1.2'
+
+>>>>>>> 959002c546f3fa7b5c2682e8901c1792a4636330
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
 
         // NOTE: Do not place your application dependencies here; they belong
