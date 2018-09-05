@@ -12,22 +12,31 @@ import java.util.List;
 public interface DishDao {
 
     @Query("SELECT * FROM dish")
-    List<Dish> getAll();
+    List<Dish> findAll();
 
     @Query("SELECT id FROM dish WHERE dish_name =:dish_name")
-    Integer getIdByName(String dish_name);
+    Integer findIdByName(String dish_name);
+
+   // @Query("SELECT * FROM dish WHERE dish_name =:dish_name")
+   // String findDishName(String dish_name);
 
     @Query("SELECT dish_name FROM dish")
-    List<String> getAllNames();
+    List<String> findAllNames();
 
     @Query("SELECT description FROM dish")
-    List<String> getAllDescriptions();
+    List<String> findAllDescriptions();
 
-    @Query("SELECT * FROM dish WHERE id = :id")
-    Dish getById(int id);
+    @Query("SELECT description FROM dish WHERE dish_name = :dish_name")
+    String findDescriptionByName(String dish_name);
+
+  //  @Query("SELECT * FROM dish WHERE id = :id")
+  //  Dish findDishById(int id);
 
     @Query("SELECT * FROM dish WHERE dish_name = :dish_name")
-    Dish getByName(String dish_name);
+    Dish findDishByName(String dish_name);
+
+    @Query("SELECT dish_name FROM dish WHERE description = :description")
+    String findNameByDescriptione(String description);
 
     @Insert
     void insert(Dish dish);
@@ -37,5 +46,8 @@ public interface DishDao {
 
     @Delete
     void delete(Dish dish);
+
+    @Delete
+    void deleteAllDishes(List<Dish> dishes);
 
 }

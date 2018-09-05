@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dish_1.book.core">
 
+
+
     <application
+        tools:replace="android:icon"
         android:name="services.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="dish_1.DishActivity_1">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,13 +38,21 @@
             android:label="@string/title_activity_edit_dish"
             android:theme="@style/AppTheme"/>
         <activity
-            android:name="dish_6.DishActivity_6"
+            android:name="ingredient_1.IngredientActivity_1"
             android:label="@string/new_ingredient"
             android:theme="@style/AppTheme"/>
         <activity
-            android:name="dish_7.DishActivity_7"
+            android:name="ingredient_2.IngredientActivity_2"
             android:label="@string/list_of_ingredients"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name="ingredient_3.IngredientActivity_3"
+            android:label="List of ingredients"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="ingredient_4.IngredientActivity_4"
+            android:label="@string/title_activity_dish_list"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

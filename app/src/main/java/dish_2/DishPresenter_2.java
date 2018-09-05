@@ -1,51 +1,65 @@
 package dish_2;
 
-import android.support.annotation.NonNull;
-
-import entity.Dish;
-import entity.DishDao;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
+import io.realm.Realm;
+import services.ConfigDb;
+import services.DishService;
+import services.UserService;
 
 public class DishPresenter_2 {
 
-    LifecycleHandler mLifecycleHandler;
+    private DishView_2 mDishView_2;
 
-    DishView_2 mDishView_2;
+    private DishService dishService;
 
-    Dish dish;
+    private ConfigDb configDb;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
+    private Realm realm;
 
-    DishDao dishDao;
+    private UserService userService;
 
-    public DishPresenter_2(@NonNull LifecycleHandler lifecycleHandler, @NonNull DishView_2 dishView_2){
-        mLifecycleHandler = lifecycleHandler;
+    public DishPresenter_2(DishView_2 dishView_2){
         mDishView_2 = dishView_2;
-        dishDao = db.dishDao();
     }
 
     public void openDish_1(){
         mDishView_2.openDish_1();
     }
 
-    public void dishNameValid(String name){
-        if (name.isEmpty()){
+    public void openDish_3(){
+        mDishView_2.openDish_3();
+    }
+
+    public void shownDishDialog1(){
+        mDishView_2.shownDishDialog1();
+    }
+
+    public void createDish(String name, String descr){
+        dishService = new DishService();
+        if (dishService.createDish(name, descr) == "invalid"){
+            shownDishDialog1();
+        }else {
+            openDish_3();
+        }
+    }
+
+    public void createUser(String name, String description){
+        userService = new UserService();
+        if (name == userService.findUserNameByName(name)){
+            shownDishDialog1();
+        }else {
+            userService.saveUser(name, description);
+            openDish_3();
+        }
+        configDb = new ConfigDb();
+        realm = Realm.getInstance(configDb.getRealmConfiguration());
+    }
+
+    public void dishNameValid(String dish_name){
+        if (dish_name.isEmpty()){
             mDishView_2.nameInvalid();
         }
         else
             mDishView_2.nameValid();
     }
 
-    public void createDish(String name, String descr) {
-        dish = new Dish(name, descr);
-        if (dishDao.getAllNames().contains(dish.getDish_name())== true){
-            mDishView_2.shownDishDialog1();
-        }else {
-            dishDao.insert(dish);
-            mDishView_2.openDish_3();
-        }
-
-    }
 }

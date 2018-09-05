@@ -1,27 +1,30 @@
 package dish_3;
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
 
-import entity.DishDao;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
+import io.realm.Realm;
+import services.ConfigDb;
+import services.DishService;
+import services.UserService;
 
 public class DishPresenter_3 {
 
-    LifecycleHandler mLifecycleHandler;
+    private DishView_3 mDishView_3;
 
-    DishView_3 mDishView_3;
+    private DishService dishService;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
-    DishDao dishDao;
+    private Realm realm;
 
-    public DishPresenter_3(@NonNull LifecycleHandler lifecycleHandler, @NonNull DishView_3 dishView_3){
-        mLifecycleHandler = lifecycleHandler;
+    private ConfigDb configDb;
+
+    private UserService userService;
+
+    public DishPresenter_3(DishView_3 dishView_3){
         mDishView_3 = dishView_3;
-        dishDao = db.dishDao();
+    }
+
+    public void openDish_1(){
+        mDishView_3.openDish_1();
     }
 
     public void openDish_2(){
@@ -29,6 +32,13 @@ public class DishPresenter_3 {
     }
 
     public List<String> loadDishes(){
-        return dishDao.getAllNames();
+        dishService = new DishService();
+        return dishService.loadDishes();
     }
+
+    public List<String> loadUsers(){
+        userService = new UserService();
+        return null;
+    }
+
 }

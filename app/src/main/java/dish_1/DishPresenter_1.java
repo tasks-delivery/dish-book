@@ -1,22 +1,10 @@
 package dish_1;
 
-
-import android.support.annotation.NonNull;
-
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
-
 public class DishPresenter_1 {
-
-    private final LifecycleHandler mLifecycleHandler;
 
     private final DishView_1 mDishView_1;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
-
-    public DishPresenter_1(@NonNull LifecycleHandler lifecycleHandler, @NonNull DishView_1 dishView_1){
-        mLifecycleHandler = lifecycleHandler;
+    public DishPresenter_1(DishView_1 dishView_1){
         mDishView_1 = dishView_1;
     }
 
@@ -26,6 +14,14 @@ public class DishPresenter_1 {
 
     public void openDish_2(){
         mDishView_1.openDish_2();
+    }
+
+    public void openIngredient_1(){
+        mDishView_1.openIngredient_1();
+    }
+
+    public void openIngredient_3(){
+        mDishView_1.openIngredient_3();
     }
 
 }

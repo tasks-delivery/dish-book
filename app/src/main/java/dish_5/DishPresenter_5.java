@@ -1,31 +1,28 @@
 package dish_5;
 
-import android.support.annotation.NonNull;
-
-import entity.Dish;
-import entity.DishDao;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
+import services.DishService;
 
 public class DishPresenter_5 {
 
-    LifecycleHandler mLifecycleHandler;
+    private DishView_5 mDishView_5;
 
-    DishView_5 mDishView_5;
+    private DishService dishService;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
-    Dish dish;
-    DishDao dishDao;
-
-    public DishPresenter_5(@NonNull LifecycleHandler lifecycleHandler, @NonNull DishView_5 dishView_5){
-        mLifecycleHandler = lifecycleHandler;
+    public DishPresenter_5(DishView_5 dishView_5){
         mDishView_5 = dishView_5;
-        dishDao = db.dishDao();
     }
 
     public void openDish_4(){
         mDishView_5.openDish_4();
+    }
+
+    public void openDish_3(){
+        mDishView_5.openDish_3();
+    }
+
+
+    public void shownDishDialog1(){
+        mDishView_5.shownDishDialog1();
     }
 
     public void dishNameValid(String name){
@@ -36,27 +33,24 @@ public class DishPresenter_5 {
             mDishView_5.nameValid();
     }
 
-    public String shownDescription(){
-        return dishDao.getByName(mDishView_5.findDish()).description;
+    public String shownDescription() {
+        dishService = new DishService();
+        return dishService.shownDescription(mDishView_5.findDish());
     }
 
-    public void updateDish(String name, String description) {
-        dish = dishDao.getByName(mDishView_5.findDish());
-        if (dishDao.getAllNames().contains(name) == true){
-            mDishView_5.shownDishDialog1();
+    public void updateDish(String dish_name, String dish_descr){
+        dishService = new DishService();
+        if (dishService.updateDish(mDishView_5.findDish(), dish_name, dish_descr) == "invalid"){
+            shownDishDialog1();
         }else {
-            dish.id = dish.getId();
-            dish.dish_name = name;
-            dish.description = description;
-            dishDao.update(dish);
-            mDishView_5.openDish_3();
+            openDish_4();
         }
     }
 
     public void deleteDish(){
-        dish = dishDao.getByName(mDishView_5.findDish());
-        dishDao.delete(dish);
-        mDishView_5.openDish_3();
+        dishService = new DishService();
+        dishService.deleteDish(mDishView_5.findDish());
+        openDish_3();
     }
 
 }
