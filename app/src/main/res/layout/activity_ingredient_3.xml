@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ingredient_3.IngredientActivity_3"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ingredient_3_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <TextView
+            android:id="@+id/ingredient_3_text_ingredient_list"
+            android:text="List of Ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="Delete"
+            android:id="@+id/ingredient_3_btn_delete_selected_ingredient"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="Add"
+            android:id="@+id/ingredient_3_btn_add_selected_ingredient"
+            android:layout_toStartOf="@id/ingredient_3_btn_delete_selected_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/ingredient_3_btn_add_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:src="@android:drawable/ic_input_add"
+            />
+
+        <ListView
+            android:layout_below="@id/ingredient_3_toolbar"
+            android:id="@+id/ingredient_3_ingredient_list"
+            android:choiceMode="multipleChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+
+
+
+
+
+</RelativeLayout>

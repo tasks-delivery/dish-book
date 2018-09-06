@@ -1,44 +1,46 @@
 package dish_4;
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
 
-import entity.DishDao;
-import entity.IngredientDao;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
+import services.DishAndIngredientService;
+import services.DishService;
 
 public class DishPresenter_4 {
 
-    LifecycleHandler mLifecycleHandler;
+    private DishView_4 mDishView_4;
 
-    DishView_4 mDishView_4;
+    private DishAndIngredientService dishAndIngredientService;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
+    private DishService dishService;
 
-    DishDao dishDao;
-
-    IngredientDao ingredientDao;
-
-    public DishPresenter_4(@NonNull LifecycleHandler lifecycleHandler, @NonNull DishView_4 dishView_4) {
-        mLifecycleHandler = lifecycleHandler;
+    public DishPresenter_4(DishView_4 dishView_4) {
         mDishView_4 = dishView_4;
-        dishDao = db.dishDao();
-        ingredientDao = db.ingredientDao();
     }
 
-    public String shownDescription() {
-        return dishDao.getByName(mDishView_4.findDish()).description;
+    public void openIngredient_3FromRemoveIngredient(){
+        mDishView_4.openIngredient_3FromRemoveIngredient();
+    }
+
+    public void openIngredient_3FromAddIngredient(){
+        mDishView_4.openIngredient_3FromAddIngredient();
     }
 
     public void openDish_5() {
         mDishView_4.openDish_5();
     }
 
-    public List<String> loadIngredients() {
-        return ingredientDao.getIngredientsByDishId(dishDao.getIdByName(mDishView_4.findDish()));
+    public void openDish_3(){
+        mDishView_4.openDish_3();
+    }
+
+    public String shownDescription() {
+        dishService = new DishService();
+        return dishService.findDescriptionOfDishByDishName(mDishView_4.findDish());
+    }
+
+    public List<String> loadIngredientsOfDish() {
+        dishAndIngredientService = new DishAndIngredientService();
+        return dishAndIngredientService.findAllIngredientNamesOfDishByDishName(mDishView_4.findDish());
     }
 
 }

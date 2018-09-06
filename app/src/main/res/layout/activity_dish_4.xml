@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -61,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_add_ingredient"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -69,6 +70,16 @@
                 android:layout_alignParentTop="true"
                 android:src="@android:drawable/ic_input_add"
                 android:contentDescription="@string/ingredients" />
+
+            <ImageView
+                android:id="@+id/btn_remove_ingredient"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/btn_add_ingredient"
+                android:contentDescription="@string/ingredients"
+                app:srcCompat="@android:drawable/ic_delete" />
 
             <TextView
                 android:id="@+id/text_ingredient"
@@ -85,6 +96,7 @@
                 android:id="@+id/ingredients_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
 
         </RelativeLayout>
 

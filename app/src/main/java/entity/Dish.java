@@ -1,37 +1,24 @@
 package entity;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
-@Entity(indices = {@Index("dish_name"), @Index("description")})
-public class Dish extends ViewModel {
+public class Dish extends RealmObject {
 
-    @PrimaryKey(autoGenerate = true)
-    public int id;
+    private String dishName;
 
-    @ColumnInfo(name = "dish_name")
-    public String dish_name;
+    private String description;
 
-    @ColumnInfo(name = "description")
-    public String description;
+    private RealmList<Ingredient> ingredients;
 
-    public int getId() {
-        return id;
+    private Ingredient ingredient;
+
+    public String getDishName() {
+        return dishName;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDish_name() {
-        return dish_name;
-    }
-
-    public void setDish_name(String dish_name) {
-        this.dish_name = dish_name;
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
     }
 
     public String getDescription() {
@@ -42,14 +29,20 @@ public class Dish extends ViewModel {
         this.description = description;
     }
 
-    public Dish(String dish_name, String description) {
-        this.dish_name = dish_name;
-        this.description = description;
+    public RealmList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    @Override
-    public String toString() {
-        return dish_name + "\n" + description;
+    public void setIngredients(RealmList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
     }
 
 }
