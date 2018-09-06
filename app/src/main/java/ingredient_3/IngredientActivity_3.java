@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,25 +57,24 @@ public class IngredientActivity_3 extends AppCompatActivity implements Ingredien
     */
 
     @OnClick(R.id.ingredient_3_btn_delete_selected_ingredient)
-    public void removeSelectedIngredient() {
+    public void removeSelectedIngredient()  {
         SparseBooleanArray checked = ingredient_3_ingredient_list.getCheckedItemPositions();
         if (findDish() != null) {
-            for (int i = 0; i < ingredientPresenter_3.loadIngredientsOfDish().size() + 10; i++) {
+            for (int i = checked.size() -1; i > -1; i--) {
                 if (checked.valueAt(i) == true) {
                     String ingName = ingredient_3_ingredient_list.getItemAtPosition(checked.keyAt(i)).toString();
                     ingredientPresenter_3.removeIngredientFromDish(ingName);
                 } else {
-                    System.out.println("item not selected");
                 }
             }
             ingredientPresenter_3.openDish_4();
         } else {
-            for (int i = 0; i < ingredientPresenter_3.loadAllIngredients().size() + 10; i++) {
+            for (int i = checked.size() -1; i > -1; i--) {
                 if (checked.valueAt(i) == true) {
                     String ingName = ingredient_3_ingredient_list.getItemAtPosition(checked.keyAt(i)).toString();
                     ingredientPresenter_3.removeSelectedIngredient(ingName);
                 } else {
-                    System.out.println("item not selected");
+
                 }
             }
             onStart();
@@ -99,6 +99,7 @@ public class IngredientActivity_3 extends AppCompatActivity implements Ingredien
         setContentView(R.layout.activity_ingredient_3);
         ButterKnife.bind(this);
         ingredientPresenter_3 = new IngredientPresenter_3(this);
+        ingredientPresenter_3.testData();
     }
 
     @Override

@@ -8,13 +8,13 @@ import io.realm.Realm;
 
 public class IngredientService {
 
-    private ConfigDb configDb;
+    private ProductionDb productionDb;
 
     private Realm realm;
 
     public void saveIngredient(String name){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -22,12 +22,12 @@ public class IngredientService {
                 ingredient.setIngName(name);
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public void updateIngredient(String oldIng, String newIng){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -35,12 +35,12 @@ public class IngredientService {
                 ingredient.setIngName(newIng);
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public void deleteIngredient(String ingName){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -48,12 +48,12 @@ public class IngredientService {
                 ingredient.deleteFromRealm();
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public String findIngredientNameByName(String ingName){
-        configDb = new ConfigDb();
-        realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        realm = Realm.getInstance(productionDb.getRealmConfiguration());
         Ingredient ingredient = realm.where(Ingredient.class).equalTo("ingName",ingName).findFirst();
         try {
             ingredient.getIngName();
@@ -64,8 +64,8 @@ public class IngredientService {
     }
 
     public List<String> findAllIngredients(){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         ArrayList<String> ingNames = new ArrayList<>();
         List<Ingredient> ingredientList = realm.where(Ingredient.class).findAll();
         for (int i = 0; i < ingredientList.size(); i++){

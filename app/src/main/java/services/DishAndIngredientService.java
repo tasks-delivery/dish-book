@@ -9,15 +9,15 @@ import io.realm.Realm;
 
 public class DishAndIngredientService {
 
-    private ConfigDb configDb;
+    private ProductionDb productionDb;
 
     private Realm realm;
 
     private IngredientService ingredientService;
 
     public void deleteIngredientFromDish(String dishName, String ingName){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -26,12 +26,12 @@ public class DishAndIngredientService {
                 dish.getIngredients().remove(ingredient);
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public void deleteAllIngredientsOfDish(String dishName){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -39,12 +39,12 @@ public class DishAndIngredientService {
                 dish.getIngredients().deleteAllFromRealm();
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public void assignIngredientToDish(String dishName, String ingName) {
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -53,12 +53,12 @@ public class DishAndIngredientService {
                 dish.getIngredients().add(ingredient);
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public List<String> findAllIngredientNamesOfDishByDishName(String dishName){
-        configDb = new ConfigDb();
-        realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        realm = Realm.getInstance(productionDb.getRealmConfiguration());
         ArrayList<String> ingNames = new ArrayList<>();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -73,8 +73,8 @@ public class DishAndIngredientService {
     }
 
     public List<String> findAllFreeIngredientNamesByDishName(String dishName){
-        configDb = new ConfigDb();
-        realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        realm = Realm.getInstance(productionDb.getRealmConfiguration());
         ArrayList<String> ingNames = new ArrayList<>();
         realm.executeTransaction(new Realm.Transaction() {
             @Override

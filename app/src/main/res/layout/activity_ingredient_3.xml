@@ -41,8 +41,6 @@
     </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-
-
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/ingredient_3_btn_add_ingredient"
             android:layout_width="wrap_content"
@@ -63,10 +61,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-
-
-
-
-
 
 </RelativeLayout>

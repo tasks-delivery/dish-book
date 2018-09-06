@@ -23,14 +23,14 @@ public class DishServiceTest extends Application {
     @Rule
     public ActivityTestRule<DishActivity_2> mActivityRule = new ActivityTestRule<>(DishActivity_2.class);
 
-    private ConfigDb configDb;
+    private ProductionDb productionDb;
 
     private Realm realm;
 
     @Before
     public void setUp(){
-        configDb = new ConfigDb();
-        realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        realm = Realm.getInstance(productionDb.getRealmConfiguration());
         dishService = new DishService();
     }
 
@@ -78,8 +78,8 @@ public class DishServiceTest extends Application {
 
     @After
     public void clearAllData() {
-        configDb.closeDb();
-        Realm.deleteRealm(configDb.getRealmConfiguration());
+        productionDb.closeDb();
+        Realm.deleteRealm(productionDb.getRealmConfiguration());
     }
 
 }

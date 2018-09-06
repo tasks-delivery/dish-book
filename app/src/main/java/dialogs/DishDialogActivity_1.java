@@ -8,8 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 import dish_1.book.core.R;
-import io.realm.Realm;
-import services.ConfigDb;
 
 public class DishDialogActivity_1 extends DialogFragment {
 

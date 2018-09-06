@@ -5,9 +5,9 @@ import android.app.Application;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class ConfigDb extends Application {
+public class ProductionDb extends Application {
 
-    public static ConfigDb instance;
+    public static ProductionDb instance;
 
     public RealmConfiguration realmConfiguration;
 
@@ -30,7 +30,7 @@ public class ConfigDb extends Application {
         }
     }
 
-    public static ConfigDb getInstance(){
+    public static ProductionDb getInstance(){
         return instance;
     }
 

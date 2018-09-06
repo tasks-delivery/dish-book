@@ -8,11 +8,11 @@ import io.realm.Realm;
 
 public class DishService {
 
-    private ConfigDb configDb;
+    private ProductionDb productionDb;
 
     public void saveDish(String name, String description) {
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         if (findAllDishes().contains(name) == true) {
         } else {
             realm.executeTransaction(new Realm.Transaction() {
@@ -24,12 +24,12 @@ public class DishService {
                 }
             });
         }
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public void updateDish(String oldDish, String newDish, String dishDescr){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -38,12 +38,12 @@ public class DishService {
                 dish.setDescription(dishDescr);
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public void deleteDish(String dishName){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -51,19 +51,19 @@ public class DishService {
                 dish.deleteFromRealm();
             }
         });
-        configDb.closeDb();
+        productionDb.closeDb();
     }
 
     public String findDescriptionOfDishByDishName(String dishName){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         Dish dish = realm.where(Dish.class).equalTo("dishName", dishName).findFirst();
         return dish.getDescription();
     }
 
     public String findDishNameByName(String dishName){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         Dish dish = realm.where(Dish.class).equalTo("dishName",dishName).findFirst();
         try {
             dish.getDishName();
@@ -74,8 +74,8 @@ public class DishService {
     }
 
     public List<String> findAllDishes(){
-        configDb = new ConfigDb();
-        Realm realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        Realm realm = Realm.getInstance(productionDb.getRealmConfiguration());
         ArrayList<String> dishNames = new ArrayList<>();
         List<Dish> dishList = realm.where(Dish.class).findAll();
         for (int i = 0; i < dishList.size(); i++){

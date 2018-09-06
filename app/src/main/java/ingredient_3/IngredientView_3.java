@@ -12,8 +12,6 @@ public interface IngredientView_3 {
 
     void navigateFromIngredient1();
 
-   // String findDish();
-
     void navigateFormDish4AddIng();
 
 

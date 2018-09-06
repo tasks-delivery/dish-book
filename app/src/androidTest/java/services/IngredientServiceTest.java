@@ -20,7 +20,7 @@ public class IngredientServiceTest {
     @Rule
     public ActivityTestRule<DishActivity_2> mActivityRule = new ActivityTestRule<>(DishActivity_2.class);
 
-    private ConfigDb configDb;
+    private ProductionDb productionDb;
 
     private Realm realm;
 
@@ -28,8 +28,8 @@ public class IngredientServiceTest {
 
     @Before
     public void setUp(){
-        configDb = new ConfigDb();
-        realm = Realm.getInstance(configDb.getRealmConfiguration());
+        productionDb = new ProductionDb();
+        realm = Realm.getInstance(productionDb.getRealmConfiguration());
         ingredientService = new IngredientService();
     }
 
@@ -56,8 +56,8 @@ public class IngredientServiceTest {
 
     @After
     public void clearAllData() {
-        configDb.closeDb();
-        Realm.deleteRealm(configDb.getRealmConfiguration());
+        productionDb.closeDb();
+        Realm.deleteRealm(productionDb.getRealmConfiguration());
     }
 
 }
