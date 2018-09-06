@@ -6,10 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -59,13 +57,26 @@ public class IngredientActivity_3 extends AppCompatActivity implements Ingredien
 
     @OnClick(R.id.ingredient_3_btn_delete_selected_ingredient)
     public void removeSelectedIngredient() {
-        int ing_length = ingredient_3_ingredient_list.getCount();
         SparseBooleanArray checked = ingredient_3_ingredient_list.getCheckedItemPositions();
         if (findDish() != null) {
-            ingredientPresenter_3.removeIngredientFromDish(ing_length, checked);
+            for (int i = 0; i < ingredientPresenter_3.loadIngredientsOfDish().size() + 10; i++) {
+                if (checked.valueAt(i) == true) {
+                    String ingName = ingredient_3_ingredient_list.getItemAtPosition(checked.keyAt(i)).toString();
+                    ingredientPresenter_3.removeIngredientFromDish(ingName);
+                } else {
+                    System.out.println("item not selected");
+                }
+            }
             ingredientPresenter_3.openDish_4();
-        }else {
-            ingredientPresenter_3.removeSelectedIngredients(ing_length, checked);
+        } else {
+            for (int i = 0; i < ingredientPresenter_3.loadAllIngredients().size() + 10; i++) {
+                if (checked.valueAt(i) == true) {
+                    String ingName = ingredient_3_ingredient_list.getItemAtPosition(checked.keyAt(i)).toString();
+                    ingredientPresenter_3.removeSelectedIngredient(ingName);
+                } else {
+                    System.out.println("item not selected");
+                }
+            }
             onStart();
         }
     }
@@ -88,16 +99,6 @@ public class IngredientActivity_3 extends AppCompatActivity implements Ingredien
         setContentView(R.layout.activity_ingredient_3);
         ButterKnife.bind(this);
         ingredientPresenter_3 = new IngredientPresenter_3(this);
-        ingredient_3_ingredient_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CheckedTextView checkedTextView = (CheckedTextView) view;
-                boolean currentCheck = checkedTextView.isChecked();
-                //System.out.println(currentCheck);
-              //  System.out.println(checkedTextView.getText());
-             //   ing_name = checkedTextView.getText().toString();
-            }
-        });
     }
 
     @Override

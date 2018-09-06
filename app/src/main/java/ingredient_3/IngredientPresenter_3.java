@@ -58,22 +58,14 @@ public class IngredientPresenter_3 {
         return dishAndIngredientService.findAllIngredientNamesOfDishByDishName(mIngredientView_3.findDish());
     }
 
-    public void removeSelectedIngredients(int ing_length, SparseBooleanArray ing_position) {
+    public void removeSelectedIngredient(String ingName){
         ingredientService = new IngredientService();
-        for (int i = 0; i < ing_length; i++)
-            if (ing_position.get(i)) {
-                String item = loadAllIngredients().get(i);
-                ingredientService.deleteIngredient(item);
-            }
+        ingredientService.deleteIngredient(ingName);
     }
 
-    public void removeIngredientFromDish ( int ing_length, SparseBooleanArray ing_position){
+    public void removeIngredientFromDish (String ingName){
         dishAndIngredientService = new DishAndIngredientService();
-        for (int i = 0; i < ing_length; i++)
-            if (ing_position.get(i)) {
-                String item = loadIngredientsOfDish().get(i);
-                dishAndIngredientService.deleteIngredientFromDish(mIngredientView_3.findDish(), item);
-            }
+        dishAndIngredientService.deleteIngredientFromDish(mIngredientView_3.findDish(), ingName);
     }
 
     public void addSelectedIngredients ( int ing_length, SparseBooleanArray ing_position){
