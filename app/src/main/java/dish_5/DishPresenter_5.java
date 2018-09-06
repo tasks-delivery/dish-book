@@ -35,14 +35,15 @@ public class DishPresenter_5 {
 
     public String shownDescription() {
         dishService = new DishService();
-        return dishService.shownDescription(mDishView_5.findDish());
+        return dishService.findDescriptionOfDishByDishName(mDishView_5.findDish());
     }
 
     public void updateDish(String dish_name, String dish_descr){
         dishService = new DishService();
-        if (dishService.updateDish(mDishView_5.findDish(), dish_name, dish_descr) == "invalid"){
+        if (dishService.findAllDishes().contains(dish_name) == true){
             shownDishDialog1();
         }else {
+            dishService.updateDish(mDishView_5.findDish(), dish_name, dish_descr);
             openDish_4();
         }
     }

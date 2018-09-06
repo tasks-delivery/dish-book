@@ -48,7 +48,6 @@ public class DishActivity_3 extends AppCompatActivity implements DishView_3 {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -84,7 +83,6 @@ public class DishActivity_3 extends AppCompatActivity implements DishView_3 {
         dish_3_dish_list.setAdapter(adapter);
         dish_3_dish_list.setWillNotDraw(false);
         return adapter;
-
     }
 
 }

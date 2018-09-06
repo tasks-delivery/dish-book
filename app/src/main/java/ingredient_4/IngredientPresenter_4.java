@@ -1,8 +1,6 @@
 package ingredient_4;
 
 import ru.arturvasilov.rxloader.LifecycleHandler;
-import services.App;
-import services.DatabaseService;
 
 public class IngredientPresenter_4 {
 
@@ -10,7 +8,7 @@ public class IngredientPresenter_4 {
 
     IngredientView_4 mIngredientView_4;
 
-    DatabaseService db = App.getInstance().getDatabaseService();
+  //  DatabaseService db = App.getInstance().getDatabaseService();
 
     /*
     Dish dish;

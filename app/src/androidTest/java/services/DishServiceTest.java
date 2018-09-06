@@ -1,91 +1,85 @@
 package services;
 
+import android.app.Application;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import entity.Dish;
-import entity.DishDao;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import dish_2.DishActivity_2;
+import io.realm.Realm;
 
 @RunWith(AndroidJUnit4.class)
-public class DishServiceTest {
-
-    private DishDao dishDao;
-
-    private Dish dish;
+public class DishServiceTest extends Application {
 
     private DishService dishService;
 
-    private DatabaseService databaseService = App.getInstance().getDatabaseService();
+    @Rule
+    public ActivityTestRule<DishActivity_2> mActivityRule = new ActivityTestRule<>(DishActivity_2.class);
+
+    private ConfigDb configDb;
+
+    private Realm realm;
 
     @Before
-    public  void setUp(){
-        dishDao = databaseService.dishDao();
+    public void setUp(){
+        configDb = new ConfigDb();
+        realm = Realm.getInstance(configDb.getRealmConfiguration());
         dishService = new DishService();
-        dishDao.deleteAllDishes(dishDao.findAll());
     }
 
     @Test
-    public void dishShouldBeCreate(){
-        dishService.createDish("test", "descr");
-        assertTrue(dishDao.findAllNames().contains("test"));
-        assertTrue(dishDao.findAllDescriptions().contains("descr"));
+    public void sameDishShouldNotBeCreate(){
+        dishService.saveDish("user", "");
+        dishService.saveDish("user", "");
+        Assert.assertTrue(dishService.findAllDishes().size() == 1);
     }
 
     @Test
-    public void existingDishShouldNotBeCreate(){
-        dishService.createDish("test", "12345");
-        dishService.createDish("test", "descr");
-        assertEquals(null, dishDao.findNameByDescriptione("descr"));
-        assertEquals("test", dishDao.findNameByDescriptione("12345"));
+    public void descriptionOfDishShouldBeCreated(){
+        dishService.saveDish("user", "descr");
+        Assert.assertTrue(dishService.findDescriptionOfDishByDishName("user").contains("descr"));
     }
 
     @Test
-    public void allDishesShouldBeVisible(){
-        dishService.createDish("first", "12345");
-        dishService.createDish("second", "12345");
-        assertTrue(dishService.loadDishes().contains("first"));
-        assertTrue(dishService.loadDishes().contains("second"));
+    public void severalDishesShouldBeCreate(){
+        dishService.saveDish("first", "");
+        dishService.saveDish("second", "");
+        Assert.assertTrue(dishService.findAllDishes().contains("first"));
+        Assert.assertTrue(dishService.findAllDishes().contains("second"));
+    }
+
+    @Test
+    public void dishShouldBeCreate() {
+        dishService.saveDish("test user", "test descr");
+        Assert.assertTrue(dishService.findAllDishes().contains("test user"));
     }
 
     @Test
     public void dishShouldBeUpdate(){
-        dishService.createDish("test", "descr");
-        dishService.updateDish("test","update test", "update descr");
-        assertFalse(dishDao.findAllNames().contains("test"));
-        assertFalse(dishDao.findAllDescriptions().contains("descr"));
-        assertTrue(dishDao.findAllNames().contains("update test"));
-        assertTrue(dishDao.findAllDescriptions().contains("update descr"));
+        dishService.saveDish("user", "");
+        dishService.updateDish("user", "new user", "");
+        Assert.assertFalse(dishService.findAllDishes().contains("user"));
+        Assert.assertTrue(dishService.findAllDishes().contains("new user"));
     }
 
     @Test
-    public void existingDishShouldNotBeUpdate(){
-        dishService.createDish("test", "descr");
-        dishService.updateDish("test","test", "update descr");
-        assertTrue(dishDao.findAllNames().contains("test"));
-        assertTrue(dishDao.findAllDescriptions().contains("descr"));
-        assertFalse(dishDao.findAllNames().contains("update test"));
-        assertFalse(dishDao.findAllDescriptions().contains("update descr"));
-    }
-
-    @Test
-    public void dishShouldBeRemove(){
-        dishService.createDish("test", "descr");
-        dishService.deleteDish("test");
-        assertFalse(dishDao.findAllNames().contains("test"));
-        assertFalse(dishDao.findAllDescriptions().contains("descr"));
+    public void dishShouldBeDelete(){
+        dishService.saveDish("test user", "");
+        dishService.deleteDish("test user");
+        Assert.assertEquals(null,dishService.findDishNameByName("test user"));
     }
 
     @After
-    public void clearData(){
-        dishDao.deleteAllDishes(dishDao.findAll());
+    public void clearAllData() {
+        configDb.closeDb();
+        Realm.deleteRealm(configDb.getRealmConfiguration());
     }
 
 }

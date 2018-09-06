@@ -58,13 +58,9 @@ public class DishActivity_2 extends AppCompatActivity implements DishView_2{
 
     @OnClick(R.id.dish_2_btn_save)
     public void goToDishList(){
-
-       // Realm.init(this);
-
         String name = dish_2_field_dish_name.getText().toString();
         String description = dish_2_field_dish_description.getText().toString();
-        dishPresenter_2.createUser(name,description);
-        //dishPresenter_2.createDish(name, description);
+        dishPresenter_2.createDish(name, description);
     }
 
     @OnTextChanged(R.id.dish_2_field_dish_name)
