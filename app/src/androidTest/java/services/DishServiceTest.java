@@ -25,10 +25,13 @@ public class DishServiceTest extends Application {
 
     private ProductionDb productionDb;
 
+    //private TestDb testDb;
+
     private Realm realm;
 
     @Before
     public void setUp(){
+        //testDb = new TestDb();
         productionDb = new ProductionDb();
         realm = Realm.getInstance(productionDb.getRealmConfiguration());
         dishService = new DishService();
@@ -78,7 +81,9 @@ public class DishServiceTest extends Application {
 
     @After
     public void clearAllData() {
+       // testDb.closeDb();
         productionDb.closeDb();
+       // Realm.deleteRealm(testDb.getRealmConfiguration());
         Realm.deleteRealm(productionDb.getRealmConfiguration());
     }
 

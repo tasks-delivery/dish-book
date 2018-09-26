@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 
 import butterknife.ButterKnife;
 import dish_1.book.core.R;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
+//import ru.arturvasilov.rxloader.LifecycleHandler;
+//import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
 
 public class IngredientActivity_2 extends AppCompatActivity implements IngredientView_2 {
 
@@ -18,10 +18,12 @@ public class IngredientActivity_2 extends AppCompatActivity implements Ingredien
 
     ArrayAdapter<String> adapter;
 
+    /*
     public static void start(@NonNull Activity activity){
         Intent intent = new Intent(activity, IngredientActivity_2.class);
         activity.startActivity(intent);
     }
+    */
 
     public ArrayAdapter<String>getListIngredients(){
        // adapter = new ArrayAdapter<String>(IngredientActivity_2.class);
@@ -33,8 +35,8 @@ public class IngredientActivity_2 extends AppCompatActivity implements Ingredien
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_2);
         ButterKnife.bind(this);
-        LifecycleHandler lifecycleHandler = LoaderLifecycleHandler.create(this, getSupportLoaderManager());
-        ingredientPresenter_2 = new IngredientPresenter_2(lifecycleHandler, this);
+     //   LifecycleHandler lifecycleHandler = LoaderLifecycleHandler.create(this, getSupportLoaderManager());
+      //  ingredientPresenter_2 = new IngredientPresenter_2(lifecycleHandler, this);
     }
 
     @Override

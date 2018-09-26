@@ -5,21 +5,31 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dish_1.book.core.R;
 import dish_2.DishActivity_2;
 import dish_3.DishActivity_3;
+import entity.Message;
 import ingredient_1.IngredientActivity_1;
 import ingredient_3.IngredientActivity_3;
 import io.realm.Realm;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import services.MessagesApi;
+import services.RestApi;
 
 public class DishActivity_1 extends AppCompatActivity implements DishView_1 {
 
     private DishPresenter_1 dishPresenter_1;
 
-    private Realm realm;
+    private RestApi restApi;
 
     @BindView(R.id.dish_1_btn_add_dish)
     Button dish_1_btn_add_dish;
@@ -69,6 +79,39 @@ public class DishActivity_1 extends AppCompatActivity implements DishView_1 {
 
     @Override
     public void openDish_2() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://rawgit.com/startandroid/data/master/messages/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        MessagesApi messagesApi = retrofit.create(MessagesApi.class);
+
+
+
+        Call<List<Message>> messages = messagesApi.messages();
+
+        messages.enqueue(new Callback<List<Message>>() {
+            @Override
+            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+               response.body();
+               System.out.println(response.body().get(1).getText());
+            }
+
+            @Override
+            public void onFailure(Call<List<Message>> call, Throwable t) {
+
+            }
+        });
+
+
+
+        /*
+        given().
+                when().
+                get("http://localhost:7070/about").
+                then().
+                statusCode(200).
+                extract().response().print();
+*/
         Intent intent = new Intent(DishActivity_1.this, DishActivity_2.class);
         intent.putExtra("navigation", "DishActivity1");
         startActivity(intent);

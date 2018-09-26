@@ -17,8 +17,8 @@ public class ProductionDb extends Application {
 
     public RealmConfiguration getRealmConfiguration() {
         realmConfiguration = new RealmConfiguration.Builder()
-                .name("pre-production")
-                .schemaVersion(2)
+                .name("production")
+                .schemaVersion(1)
                 .build();
         return realmConfiguration;
     }

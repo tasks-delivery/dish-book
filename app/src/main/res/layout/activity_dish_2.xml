@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,45 +9,82 @@
     tools:context="dish_2.DishActivity_2"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/dish_2_field_dish_name"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/placeholder_dish_name"
-        android:imeOptions="actionNext"
-        android:maxLength="20"
-        android:maxLines="1"
-        android:inputType=""
-        android:singleLine="true" />
+        android:layout_height="250dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:layout_marginTop="30dp"
-        android:id="@+id/dish_2_field_dish_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dish_2_field_dish_name"
-        android:ems="5"
-        android:hint="@string/description"
-        android:imeOptions="actionDone"
-        android:inputType="textMultiLine"
-        android:maxLength="125"
-        android:maxLines="5"
-        android:singleLine="true" />
+        <EditText
+            android:id="@+id/dish_2_field_dish_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/placeholder_dish_name"
+            android:imeOptions="actionNext"
+            android:inputType=""
+            android:maxLength="20"
+            android:maxLines="1"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_below="@id/dish_2_field_dish_description"
-        android:id="@+id/dish_2_btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/save" />
+        <EditText
+            android:id="@+id/dish_2_field_dish_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dish_2_field_dish_name"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="5"
+            android:hint="@string/description"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:maxLength="125"
+            android:maxLines="5"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dish_2_field_dish_name" />
 
-    <Button
-        android:layout_below="@id/dish_2_btn_save"
-        android:id="@+id/dish_2_btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/back" />
+        <Button
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:id="@+id/dish_2_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dish_2_field_dish_description"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dish_2_btn_back" />
 
-</RelativeLayout>
+        <Button
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:id="@+id/dish_2_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dish_2_btn_save"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dish_2_field_dish_description" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

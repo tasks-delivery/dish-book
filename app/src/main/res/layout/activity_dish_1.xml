@@ -7,79 +7,94 @@
     android:id="@+id/dish_1_font"
     tools:context="dish_1.DishActivity_1">
 
-
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:layout_marginTop="8dp"
             android:background="@mipmap/dish1_font3"
-            app:layout_constraintTop_toTopOf="parent"></android.support.constraint.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"></android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
-
-            android:id="@+id/constraintLayout"
+            android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
-            android:layout_height="192dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="60dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-
-                <Button
-
-                    android:id="@+id/dish_1_btn_add_dish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/add_dish"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
                 <Button
                     android:id="@+id/dish_1_btn_all_dishes"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/all_dishes"
+                    android:background="@color/white"
+                    android:text="@string/dishes"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/dish_1_btn_all_ingredients"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:text="@string/ingredients"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="0.573">
+
+                <Button
+                    android:id="@+id/dish_1_btn_add_dish"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/add_dish"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/dish_1_btn_add_ingredient"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@id/dish_1_btn_add_dish"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Add ingredient"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/add_ingredient"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/dish_1_btn_add_dish" />
 
-                <Button
-                    android:id="@+id/dish_1_btn_all_ingredients"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@id/dish_1_btn_all_dishes"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="All ingredients"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dish_1_btn_all_dishes" />
-
         </android.support.constraint.ConstraintLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>

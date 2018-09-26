@@ -1,10 +1,10 @@
 package ingredient_4;
 
-import ru.arturvasilov.rxloader.LifecycleHandler;
+//import ru.arturvasilov.rxloader.LifecycleHandler;
 
 public class IngredientPresenter_4 {
 
-    LifecycleHandler mLifecycleHandler;
+    //LifecycleHandler mLifecycleHandler;
 
     IngredientView_4 mIngredientView_4;
 
@@ -18,7 +18,7 @@ public class IngredientPresenter_4 {
     Ingredient ingredient;
 
     IngredientDao ingredientDao;
-    */
+
 
     public IngredientPresenter_4(LifecycleHandler lifecycleHandler, IngredientView_4 ingredientView_4){
         mLifecycleHandler = lifecycleHandler;
@@ -26,5 +26,6 @@ public class IngredientPresenter_4 {
         // dishDao = db.dishDao();
         //    ingredientDao = db.ingredientDao();
     }
+     */
 
 }

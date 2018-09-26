@@ -68,14 +68,6 @@ public class IngredientPresenter_3 {
         dishAndIngredientService.deleteIngredientFromDish(mIngredientView_3.findDish(), ingName);
     }
 
-    public void testData(){
-        ingredientService = new IngredientService();
-        ingredientService.saveIngredient("first");
-        ingredientService.saveIngredient("second");
-        ingredientService.saveIngredient("third");
-        ingredientService.saveIngredient("four");
-    }
-
     public void addSelectedIngredients ( int ing_length, SparseBooleanArray ing_position){
         dishAndIngredientService = new DishAndIngredientService();
         for (int i = 0; i < ing_length; i++)

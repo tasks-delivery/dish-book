@@ -99,7 +99,6 @@ public class IngredientActivity_3 extends AppCompatActivity implements Ingredien
         setContentView(R.layout.activity_ingredient_3);
         ButterKnife.bind(this);
         ingredientPresenter_3 = new IngredientPresenter_3(this);
-        ingredientPresenter_3.testData();
     }
 
     @Override

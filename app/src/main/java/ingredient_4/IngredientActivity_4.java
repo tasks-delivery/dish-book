@@ -10,8 +10,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dish_1.book.core.R;
 import dish_4.DishActivity_4;
-import ru.arturvasilov.rxloader.LifecycleHandler;
-import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
+//import ru.arturvasilov.rxloader.LifecycleHandler;
+//import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
 
 public class IngredientActivity_4 extends AppCompatActivity implements IngredientView_4 {
 
@@ -34,8 +34,8 @@ public class IngredientActivity_4 extends AppCompatActivity implements Ingredien
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_4);
         ButterKnife.bind(this);
-        LifecycleHandler lifecycleHandler1 = LoaderLifecycleHandler.create(this, getSupportLoaderManager());
-        ingredientPresenter_4 = new IngredientPresenter_4(lifecycleHandler1, this);
+      //  LifecycleHandler lifecycleHandler1 = LoaderLifecycleHandler.create(this, getSupportLoaderManager());
+      //  ingredientPresenter_4 = new IngredientPresenter_4(lifecycleHandler1, this);
     }
 
     @Override

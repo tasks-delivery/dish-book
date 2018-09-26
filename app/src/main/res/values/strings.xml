@@ -5,6 +5,7 @@
     <string name="title_activity_edit_dish">Edit Dish</string>
     <string name="title_activity_add_dish">Add Dish</string>
     <string name="placeholder_dish_name">Dish name</string>
+    <string name="dishes">Dishes</string>
     <string name="add_dish">Add dish</string>
     <string name="all_dishes">All dishes</string>
     <string name="cancel">Cancel</string>
@@ -17,6 +18,7 @@
     <string name="conflict_with_existing_dish_name">Conflict with existing dish name</string>
     <string name="new_ingredient">New ingredient</string>
     <string name="ingredients">Ingredients</string>
+    <string name="add_ingredient">Add ingredient</string>
     <string name="ingredient_name">Ingredient name</string>
     <string name="ingredient">Ingredient</string>
     <string name="dish_weight">Dish weight</string>

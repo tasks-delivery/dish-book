@@ -29,11 +29,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@color/colorPrimary"
-                android:src="@mipmap/dish_edit_icon"
+                android:src="@mipmap/ic_launcher_dish_edit"
                 android:contentDescription="@string/title_activity_edit_dish" />
-
         </RelativeLayout>
-
 
     </android.support.v7.widget.Toolbar>
 
